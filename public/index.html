@@ -5,13 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
     <title>Log in</title>
 </head>
 
 <body>
-    <form>
-        <input type='email'>
-    </form>
+    <div class="container">
+        <form class="user_form">
+            <h1 class="form_title">
+                Welcome Back
+            </h1>
+            <label class="input_label" for="email">Email
+                <input class="form_input" id="email" type="email" name="email" placeholder="Enter Your email" required>
+            </label>
+            <label class="input_label" for="password"> Password
+                <input class="form_input" id="password" type="password" name="password"
+                    placeholder="Enter your password" required>
+            </label>
+            <button class="login_button" id="login_btn">Log in</button>
+        </form>
+        <a class="switch" href="./signup.html"> Sign up </a>
+    </div>
+    <footer>Made with ♡ @2020</footer>
+    <script src="./login.js"></script>
 </body>
 
 </html>

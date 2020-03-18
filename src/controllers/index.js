@@ -1,10 +1,8 @@
 const router = require('express').Router();
-
 const { notFound, serverError } = require('./error');
+const signupController = require('./signup');
 
-router.get('/server-error', (req, res) => {
-	res.status(500).send('server error test');
-});
+router.post('/signup', signupController);
 
 router.use(notFound);
 router.use(serverError);
