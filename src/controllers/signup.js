@@ -25,8 +25,11 @@ const schema = joi.object(validationObject);
 
 const signupValidate = (req, res) => {
 	const { error, value } = schema.validate(req.body);
-	console.log(value);
-	if (error) return res.status(400).json({ error });
+	if (error) res.status(400).json({ error });
+	else
+		res
+			.status(200)
+			.json({ message: 'User created successfully', username: value.username });
 };
 
 module.exports = signupValidate;

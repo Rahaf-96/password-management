@@ -51,6 +51,17 @@
 	font-size: 20px;
 }
 
+.welcome-message {
+	background: white;
+	position: absolute;
+	color: #bf7b6b;
+	border-radius: 6px;
+	z-index: 1;
+	height: 80vh;
+	width: 75vw;
+	font-size: 30px;
+	padding-top: 100px;
+}
 footer {
 	background: #bf7b6b;
 	color: white;
