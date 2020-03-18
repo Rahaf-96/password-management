@@ -1,5 +1,5 @@
 const joi = require('@hapi/joi');
-
+const storeData = require('../models/queries/users');
 const validationObject = {
 	username: joi
 		.string()
@@ -26,10 +26,12 @@ const schema = joi.object(validationObject);
 const signupValidate = (req, res) => {
 	const { error, value } = schema.validate(req.body);
 	if (error) res.status(400).json({ error });
-	else
+	else {
+		storeData(value);
 		res
 			.status(200)
 			.json({ message: 'User created successfully', username: value.username });
+	}
 };
 
 module.exports = signupValidate;
