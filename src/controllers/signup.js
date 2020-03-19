@@ -1,5 +1,6 @@
 const joi = require('@hapi/joi');
 const storeData = require('../models/queries/users');
+
 const validationObject = {
 	username: joi
 		.string()

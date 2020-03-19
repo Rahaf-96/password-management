@@ -1,4 +1,6 @@
 const joi = require('@hapi/joi');
+const getUser = require('../models/queries/getuser');
+const bcrypt = require('bcryptjs');
 
 const validationObject = {
 	email: joi
@@ -21,7 +23,19 @@ const loginValidate = (req, res) => {
 	const { error, value } = schema.validate(req.body);
 	if (error) res.status(400).json({ error });
 	else {
-		res.status(200).json({ message: 'logged in successfully' });
+		getUser(value, (error, result) => {
+			if (result.length !== 0) {
+				const plainPass = value.password;
+				const hashedPass = result[0].password;
+				bcrypt.compare(plainPass, hashedPass).then((compareResult) => {
+					if (compareResult)
+						res.status(200).json({ message: 'logged in successfully' });
+					else {
+						res.status(400).json({ message: 'you cant log in' });
+					}
+				});
+			}
+		});
 	}
 };
 

@@ -8,7 +8,6 @@ const hashPassword = (plainPassword, callback) => {
 };
 
 const storeUser = (reqBody) => {
-	console.log(reqBody);
 	const { username, email, password, verifiedPassword } = reqBody;
 	hashPassword(password, (err, hash) => {
 		hashPassword(verifiedPassword, (err, hash2) => {
