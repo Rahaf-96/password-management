@@ -31,7 +31,9 @@ const loginValidate = (req, res) => {
 					if (compareResult)
 						res.status(200).json({ message: 'logged in successfully' });
 					else {
-						res.status(400).json({ message: 'you cant log in' });
+						res
+							.status(400)
+							.json({ message: 'your email or password is incorrect' });
 					}
 				});
 			}

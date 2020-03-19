@@ -22,7 +22,9 @@ loginButton.addEventListener('click', (e) => {
 		.then((res) => {
 			if (res.error) console.log('response', res);
 			else {
-				console.log(res);
+				if (res.message === 'logged in successfully') alert(res.message);
+				else if (res.message === 'your email or password is incorrect')
+					alert(res.message);
 			}
 		})
 		.catch((err) => console.log(err));
