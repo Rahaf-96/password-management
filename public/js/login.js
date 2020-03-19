@@ -20,7 +20,7 @@ loginButton.addEventListener('click', (e) => {
 	})
 		.then((response) => response.json())
 		.then((res) => {
-			if (res.error) console.log('response', res);
+			if (res.error) alert('use valid email or password');
 			else {
 				if (res.message === 'logged in successfully') alert(res.message);
 				else if (res.message === 'your email or password is incorrect')
