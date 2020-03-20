@@ -1,5 +1,6 @@
 const joi = require('@hapi/joi');
 const storeData = require('../models/queries/users');
+const emailExist = require('../models/queries/getuser');
 
 const validationObject = {
 	username: joi
@@ -28,10 +29,19 @@ const signupValidate = (req, res) => {
 	const { error, value } = schema.validate(req.body);
 	if (error) res.status(400).json({ error });
 	else {
-		storeData(value);
-		res
-			.status(200)
-			.json({ message: 'User created successfully', username: value.username });
+		emailExist(value, (err, result) => {
+			if (result.length !== 0) {
+				res.status(400).json({
+					message: 'email already exists',
+				});
+			} else {
+				storeData(value);
+				res.status(200).json({
+					message: 'User created successfully',
+					username: value.username,
+				});
+			}
+		});
 	}
 };
 

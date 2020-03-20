@@ -1,7 +1,6 @@
 const signupButton = document.getElementById('signup');
 const container = document.getElementById('container');
-const errorMessage = document.createElement('div');
-
+const signupNote = document.getElementById('signup-note');
 signupButton.addEventListener('click', (e) => {
 	e.preventDefault();
 
@@ -25,21 +24,24 @@ signupButton.addEventListener('click', (e) => {
 		.then((response) => response.json())
 		.then((res) => {
 			if (res.error) {
-				errorMessage.innerHTML = 'make sure your email and password are valid';
-				errorMessage.style.color = 'red';
-				container.appendChild(errorMessage);
+				signupNote.innerHTML = 'make sure your email and password are valid';
 			} else {
-				const welcomeMessage = document.createElement('div');
-				welcomeMessage.innerHTML = 'Thanks for signing up ' + res.username;
-				welcomeMessage.classList.add('welcome-message');
-				container.appendChild(welcomeMessage);
-				const loginButton = document.createElement('button');
-				loginButton.innerHTML = 'Press Here to Log in!';
-				loginButton.classList.add('login_button');
-				loginButton.addEventListener('click', () => {
-					window.location = '/';
-				});
-				welcomeMessage.appendChild(loginButton);
+				console.log(res);
+				if (res.message === 'email already exists') {
+					signupNote.innerHTML = res.message;
+				} else {
+					const welcomeMessage = document.createElement('div');
+					welcomeMessage.innerHTML = 'Thanks for signing up ' + res.username;
+					welcomeMessage.classList.add('welcome-message');
+					container.appendChild(welcomeMessage);
+					const loginButton = document.createElement('button');
+					loginButton.innerHTML = 'Press Here to Log in!';
+					loginButton.classList.add('login_button');
+					loginButton.addEventListener('click', () => {
+						window.location = '/';
+					});
+					welcomeMessage.appendChild(loginButton);
+				}
 			}
 		})
 		.catch((err) => console.log(err));

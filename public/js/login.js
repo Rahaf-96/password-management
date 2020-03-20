@@ -23,17 +23,9 @@ loginButton.addEventListener('click', (e) => {
 		.then((res) => {
 			if (res.error || res.message === 'your email or password is incorrect') {
 				loginNote.innerHTML = 'your email or password is incorrect';
-				if (loginNote.classList.contains('green-note')) {
-					loginNote.classList.remove('green-note');
-				}
 				loginNote.classList.add('red-note');
 			} else {
 				if (res.message === 'logged in successfully') {
-					loginNote.innerHTML = 'logged in successfuly';
-					if (loginNote.classList.contains('red-note')) {
-						loginNote.classList.remove('red-note');
-					}
-					loginNote.classList.add('green-note');
 					window.location = '/user';
 				}
 			}

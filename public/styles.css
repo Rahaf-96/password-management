@@ -71,13 +71,6 @@ footer {
 	text-align: center;
 }
 
-.green-note {
-	display: block;
-	font-size: 20px;
-	margin-left: 30px;
-	color: green;
-}
-
 .red-note {
 	display: block;
 	font-size: 20px;
@@ -88,4 +81,10 @@ footer {
 .welcome-note {
 	font-size: 50px;
 	text-align: center;
+}
+
+.signup-note {
+	color: red;
+	margin-left: 30px;
+	font-size: 20px;
 }
