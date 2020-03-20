@@ -18,7 +18,7 @@ router.get('/server-error-test', (req, res) => {
 	res.sendFile(path.join(__dirname, '..', 'public', 'signup.html'));
 });
 
-router.use(notFound);
 router.use(serverError);
+router.use(notFound);
 
 module.exports = router;
