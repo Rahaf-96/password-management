@@ -34,6 +34,7 @@ loginButton.addEventListener('click', (e) => {
 						loginNote.classList.remove('red-note');
 					}
 					loginNote.classList.add('green-note');
+					window.location = '/user';
 				}
 			}
 		})

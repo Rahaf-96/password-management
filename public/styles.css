@@ -84,3 +84,8 @@ footer {
 	margin-left: 30px;
 	color: red;
 }
+
+.welcome-note {
+	font-size: 50px;
+	text-align: center;
+}

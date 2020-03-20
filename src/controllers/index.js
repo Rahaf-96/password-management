@@ -10,6 +10,10 @@ router.get('/signup', (req, res) => {
 router.post('/signup', signupController);
 router.post('/login', loginController);
 
+router.get('/user', (req, res) => {
+	res.sendFile(path.join(__dirname, '..', '..', 'public', 'user.html'));
+});
+
 router.get('/server-error-test', (req, res) => {
 	res.sendFile(path.join(__dirname, '..', 'public', 'signup.html'));
 });
