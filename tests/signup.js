@@ -13,11 +13,34 @@ tape('sign up test', (t) => {
 		})
 		.expect(200)
 		.end((err, result) => {
-			t.equal(result.status, 200, 'sign up successfuly');
+			t.equal(
+				result.body.message,
+				'User created successfully',
+				'sign up successfuly',
+			);
 			t.end();
 		});
 });
 
+tape('sign up test', (t) => {
+	supertest(app)
+		.post('/signup')
+		.send({
+			username: 'Rahaf',
+			email: 'rahaf@rahaf.com',
+			password: 'Rahaf123',
+			verifiedPassword: 'Rahaf123',
+		})
+		.expect(200)
+		.end((err, result) => {
+			t.equal(
+				result.body.message,
+				'email already exists',
+				'email already exists',
+			);
+			t.end();
+		});
+});
 tape('invalid email when sign up test', (t) => {
 	supertest(app)
 		.post('/signup')

@@ -31,7 +31,7 @@ const signupValidate = (req, res) => {
 	else {
 		emailExist(value, (err, result) => {
 			if (result.length !== 0) {
-				res.status(400).json({
+				res.status(200).json({
 					message: 'email already exists',
 				});
 			} else {

@@ -4,6 +4,7 @@ const app = require('../src/app');
 
 // to make this test work you should sign up first
 // use email: rahaf@rahaf.com & password: Rahaf123
+
 tape('log in test', (t) => {
 	supertest(app)
 		.post('/login')
