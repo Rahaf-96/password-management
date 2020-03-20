@@ -7,17 +7,17 @@ tape('test 404 error', (t) => {
 		.get('/notfound')
 		.expect(404)
 		.end((err, result) => {
-			t.equal(result.status, 404, 'the page has status 404');
+			t.equal(result.status, 404, 'the page not found 404 error');
 			t.end();
 		});
 });
 
 tape('test 500 error', (t) => {
 	supertest(app)
-		.get('/server-error')
+		.get('/server-error-test')
 		.expect(500)
 		.end((err, result) => {
-			t.equal(result.status, 500, 'the page has status 500');
+			t.equal(result.status, 500, 'the page has server error 500');
 			t.end();
 		});
 });

@@ -10,9 +10,10 @@ router.get('/signup', (req, res) => {
 router.post('/signup', signupController);
 router.post('/login', loginController);
 
-router.get('/server-error', (req, res) => {
-	res.status(500).send('server error test page');
+router.get('/server-error-test', (req, res) => {
+	res.sendFile(path.join(__dirname, '..', 'public', 'signup.html'));
 });
+
 router.use(notFound);
 router.use(serverError);
 
