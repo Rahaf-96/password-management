@@ -70,3 +70,17 @@ footer {
 	width: 100vw;
 	text-align: center;
 }
+
+.green-note {
+	display: block;
+	font-size: 20px;
+	margin-left: 30px;
+	color: green;
+}
+
+.red-note {
+	display: block;
+	font-size: 20px;
+	margin-left: 30px;
+	color: red;
+}
