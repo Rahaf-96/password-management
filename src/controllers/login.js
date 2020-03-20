@@ -36,6 +36,10 @@ const loginValidate = (req, res) => {
 							.json({ message: 'your email or password is incorrect' });
 					}
 				});
+			} else {
+				res
+					.status(400)
+					.json({ message: 'your email or password is incorrect' });
 			}
 		});
 	}

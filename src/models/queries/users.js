@@ -8,17 +8,14 @@ const hashPassword = (plainPassword, callback) => {
 };
 
 const storeUser = (reqBody) => {
-	const { username, email, password, verifiedPassword } = reqBody;
+	const { username, email, password } = reqBody;
 	hashPassword(password, (err, hash) => {
-		hashPassword(verifiedPassword, (err, hash2) => {
-			const sql = {
-				text:
-					'INSERT INTO users(username,email,password,verifiedPassword) VALUES($1,$2,$3,$4);',
-				values: [username, email, hash, hash2],
-			};
-			connection.query(sql.text, sql.values, (error) => {
-				if (error) throw error;
-			});
+		const sql = {
+			text: 'INSERT INTO users(username,email,password) VALUES($1,$2,$3);',
+			values: [username, email, hash],
+		};
+		connection.query(sql.text, sql.values, (error) => {
+			if (error) throw error;
 		});
 	});
 };
